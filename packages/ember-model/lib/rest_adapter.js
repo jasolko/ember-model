@@ -110,9 +110,9 @@ Ember.RESTAdapter = Ember.Adapter.extend({
     if (!urlRoot) { throw new Error('Ember.RESTAdapter requires a `url` property to be specified'); }
 
     if (!Ember.isEmpty(id)) {
-      return urlRoot + "/" + id + ".json";
+      return urlRoot + "/" + id;
     } else {
-      return urlRoot + ".json";
+      return urlRoot;
     }
   },
 
