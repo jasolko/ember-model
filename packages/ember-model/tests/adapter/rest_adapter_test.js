@@ -48,7 +48,7 @@ test("findAll", function() {
   expect(3);
 
   adapter._ajax = function(url, params, method) {
-    equal(url, "/posts.json");
+    equal(url, "/posts");
     equal(params, undefined);
     equal(method, "GET");
     return ajaxSuccess();
@@ -173,7 +173,7 @@ test("findById", function() {
       record;
 
   adapter._ajax = function(url, params, method) {
-    equal(url, "/posts/1.json");
+    equal(url, "/posts/1");
     equal(params, undefined);
     equal(method, "GET");
     return ajaxSuccess(data);
@@ -294,7 +294,7 @@ test("findQuery", function() {
   expect(3);
 
   adapter._ajax = function(url, params, method) {
-    equal(url, "/posts.json");
+    equal(url, "/posts");
     deepEqual(params, {foo: 'bar'});
     equal(method, "GET");
     return ajaxSuccess();
@@ -427,7 +427,7 @@ test("createRecord", function() {
   ok(record.get('isNew'), "Record should be new");
 
   adapter._ajax = function(url, params, method) {
-    equal(url, "/posts.json");
+    equal(url, "/posts");
     deepEqual(params, record.toJSON());
     equal(method, "POST");
     return ajaxSuccess({post: {id: 1, name: "Erik"}});
@@ -475,7 +475,7 @@ test("saveRecord", function() {
   ok(record.get('isDirty'), "Record should be dirty");
 
   adapter._ajax = function(url, params, method) {
-    equal(url, "/posts/1.json");
+    equal(url, "/posts/1");
     deepEqual(params, record.toJSON());
     equal(method, "PUT");
     return ajaxSuccess({id: 1, name: "Erik"});
@@ -520,7 +520,7 @@ test("deleteRecord", function() {
   ok(!record.get('isDeleted'), "Record should not be deleted");
 
   adapter._ajax = function(url, params, method) {
-    equal(url, "/posts/1.json");
+    equal(url, "/posts/1");
     deepEqual(params, record.toJSON());
     equal(method, "DELETE");
     return ajaxSuccess();
@@ -671,7 +671,7 @@ test("find with 0", function() {
   RESTModel.url = '/posts';
 
   adapter._ajax = function(url, params, method) {
-    equal(url, "/posts/0.json");
+    equal(url, "/posts/0");
     equal(params, undefined);
     equal(method, "GET");
     return ajaxSuccess();
